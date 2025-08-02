@@ -1,12 +1,12 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class BasePage {
+
+    protected final String BASE_URL = "https://tms9-dev-ed.develop.my.salesforce.com";
 
     WebDriver driver;
     WebDriverWait wait;
