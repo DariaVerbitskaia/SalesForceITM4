@@ -2,8 +2,10 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-    public class LoginPage extends BasePage {
+public class LoginPage extends BasePage {
 
 
         private final By LOGIN_FIELD = By.id("username");
@@ -15,15 +17,26 @@ import org.openqa.selenium.WebDriver;
             super(driver);
         }
 
+
         @Step("Открытие страницы логина")
-        public void open() {
+        @Override
+        public LoginPage open() {
             driver.get(BASE_URL);
+            return this;
+        }
+
+        @Override
+        @Step("Открытие страницы логина")
+        public LoginPage isPageOpened() {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_FIELD));
+            return this;
         }
 
         @Step("Вход в систему с именем пользователя: {user} и паролем {password}")
-        public void login(String user, String password) {
+        public LoginPage login(String user, String password) {
             driver.findElement(LOGIN_FIELD).sendKeys(user);
             driver.findElement(PASSWORD_FIELD).sendKeys(password);
             driver.findElement(LOGIN_BUTTON).click();
+            return new LoginPage(driver);
         }
     }

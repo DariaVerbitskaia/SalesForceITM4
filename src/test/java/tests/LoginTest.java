@@ -15,7 +15,8 @@ public class LoginTest extends BaseTest {
     @Issue("ITM-1-4")
     @Description("Пользователь совершил успешный вход")
     public void checkUserLogin() {
-        loginPage.open();
-        loginPage.login("tborodich@tms.sandbox", "Password003!");
+        loginPage.open()
+                .isPageOpened()
+                .login("tborodich@tms.sandbox", "Password003!");
     }
 }

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class BasePage {
+public abstract class BasePage {
 
     protected final String BASE_URL = "https://tms9-dev-ed.develop.my.salesforce.com";
 
@@ -16,8 +16,7 @@ public class BasePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void write(String label, String text) {
-        driver.findElement(By.xpath(String.format("//label[text()='%s']//ancestor::lightning-input//input", label)))
-                .sendKeys(text);
-    }
+    public abstract BasePage open();
+    public abstract BasePage isPageOpened();
+
 }
