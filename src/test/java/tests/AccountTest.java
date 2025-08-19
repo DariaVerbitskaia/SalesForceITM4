@@ -1,11 +1,8 @@
 package tests;
 
-
 import dto.Account;
 import dto.AccountFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 public class AccountTest extends BaseTest {
 
